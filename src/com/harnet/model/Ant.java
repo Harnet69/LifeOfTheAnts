@@ -1,21 +1,26 @@
 package com.harnet.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Ant {
     private String name;
-    private int[] position;
+    private List<Integer> position = new ArrayList<>();
 
-    public Ant(String name, int[] position) {
+    public Ant(String name) {
         this.name = name;
-        this.position = position;
+        this.position = setInitialPosition();
     }
 
     public String getName() {
         return name;
     }
 
-    public int[] getPosition() {
+    public List<Integer> getPosition() {
         return position;
     }
 
-    public abstract int[] move();
+    public abstract List<Integer> setInitialPosition();
+
+    public abstract List<Integer> move();
 }
