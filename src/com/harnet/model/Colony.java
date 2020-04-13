@@ -28,15 +28,20 @@ public class Colony {
     }
 
     private void populateColony(){
-       populateWith(1, Queen.getInstance());
-       populateWith(WORKERS_QTT, new Worker());
-       populateWith(SOLDIERS_QTT, new Soldier());
-       populateWith(DRONES_QTT, new Drone());
+       populateWith(1, "Queen");
+       populateWith(WORKERS_QTT, "worker");
+       populateWith(SOLDIERS_QTT, "soldier");
+       populateWith(DRONES_QTT, "drone");
     }
 
-    private void populateWith(int qtt, Ant ant){
+    private void populateWith(int qtt, String antName){
         for(int i=1; i<=qtt; i++){
-            ants.add(ant);
+            switch (antName) {
+                case "Queen":   ants.add(Queen.getInstance());
+                case "worker":  ants.add(new Worker());
+                case "soldier": ants.add(new Soldier());
+                case "drone":   ants.add(new Drone());
+            }
         }
     }
 

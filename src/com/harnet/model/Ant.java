@@ -7,7 +7,7 @@ import java.util.Random;
 
 public abstract class Ant {
     private String name;
-    private List<Integer> position = new ArrayList<>();
+    private List<Integer> position;
 
     public Ant(String name) {
         this.name = name;
