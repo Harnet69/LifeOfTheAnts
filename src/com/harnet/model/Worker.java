@@ -5,13 +5,8 @@ import java.util.List;
 
 public class Worker extends Ant {
 
-    public Worker(String name) {
-        super(name);
-    }
-
-    @Override
-    public List<Integer> setInitialPosition() {
-        return null;
+    public Worker() {
+        super("Worker");
     }
 
     @Override

@@ -17,7 +17,6 @@ public class Queen extends Ant {
         return instance;
     }
 
-    @Override
     public List<Integer> setInitialPosition() {
         return Arrays.asList(50, 50);
     }

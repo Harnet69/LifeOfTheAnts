@@ -1,17 +1,13 @@
 package com.harnet.model;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Soldier extends Ant {
 
-    public Soldier(String name) {
-        super(name);
-    }
-
-    @Override
-    public List<Integer> setInitialPosition() {
-        return null;
+    public Soldier() {
+        super("soldier");
     }
 
     @Override

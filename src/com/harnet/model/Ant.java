@@ -1,7 +1,9 @@
 package com.harnet.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Ant {
     private String name;
@@ -20,7 +22,10 @@ public abstract class Ant {
         return position;
     }
 
-    public abstract List<Integer> setInitialPosition();
+    public List<Integer> setInitialPosition() {
+        Random rn = new Random();
+        return Arrays.asList(rn.nextInt(100), rn.nextInt(100));
+    }
 
     public abstract List<Integer> move();
 }

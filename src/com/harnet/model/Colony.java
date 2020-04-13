@@ -26,6 +26,9 @@ public class Colony {
 
     private void populateColony(){
         ants.add(Queen.getInstance());
+        ants.add(new Soldier());
+        ants.add(new Worker());
+        ants.add(new Drone());
     }
 
     public List<Ant> getAnts() {
