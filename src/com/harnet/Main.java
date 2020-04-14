@@ -12,17 +12,20 @@ public class Main {
         System.out.println("size of the colony");
         System.out.println(Colony.getInstance().getCOLONYSIZE());
 
-        List<Ant> ants = Colony.getInstance().getAnts();
-        for(Ant ant : ants){
-//            System.out.println(ant.getName() + " : " + ant.getPosition());
+        //Show all ants with coordinates
+        for(Ant ant : Colony.getInstance().getAnts()){
+            System.out.println(ant.getName() + " : " + ant.getPosition());
         }
+
         // number of drones in the colony
         System.out.println();
+        System.out.println("Drones in the colony");
         System.out.println(Colony.getInstance().countAnts("drone"));
 
-        ants.stream()
+        // move ants
+        Colony.getInstance().getAnts().stream()
                 .filter(x -> x.getName().equals("worker"))
-                .map(x -> x.move())
+                .map(Ant::move)
                 .forEach(System.out::println);
     }
 }

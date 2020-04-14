@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Colony {
     private static Colony instance = null;
-    public final static List<Integer> COLONY_SIZE = Arrays.asList(100, 100);
+    public final static List<Integer> COLONY_SIZE = Arrays.asList(10, 10);
     private final int WORKERS_QTT = 4;
     private final int SOLDIERS_QTT = 3;
     private final int DRONES_QTT = 2;
@@ -61,7 +61,7 @@ public class Colony {
     }
 
     // check if the coordinate empty
-    private boolean isCoordinateUnique(Ant ant, List<Ant> ants){
+    public boolean isCoordinateUnique(Ant ant, List<Ant> ants){
         for(Ant antInAnts : ants){
             assert ant != null;
 
