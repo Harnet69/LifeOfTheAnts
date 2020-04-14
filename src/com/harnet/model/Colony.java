@@ -3,10 +3,11 @@ package com.harnet.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Colony {
     private static Colony instance = null;
-    public final static List<Integer> COLONY_SIZE = Arrays.asList(7, 70);
+    public final static List<Integer> COLONY_SIZE = Arrays.asList(10, 10);
     private final int WORKERS_QTT = 4;
     private final int SOLDIERS_QTT = 3;
     private final int DRONES_QTT = 2;
@@ -20,10 +21,6 @@ public class Colony {
         return COLONY_SIZE;
     }
 
-    public void setAnts(List<Ant> ants) {
-        this.ants = ants;
-    }
-
     public static Colony getInstance() {
         if (instance == null) {
             instance = new Colony();
@@ -33,6 +30,11 @@ public class Colony {
 
     public List<Ant> getAnts() {
         return ants;
+    }
+
+    public List<Integer> setInitialPosition() {
+        Random rn = new Random();
+        return Arrays.asList(rn.nextInt(COLONY_SIZE.get(0)), rn.nextInt(COLONY_SIZE.get(1)));
     }
 
     private void populateColony() {
@@ -51,13 +53,13 @@ public class Colony {
                     ant = Queen.getInstance();
                     break;
                 case "worker":
-                    ant = new Worker();
+                    ant = new Worker("worker", setInitialPosition());
                     break;
                 case "soldier":
-                    ant = new Soldier();
+                    ant = new Soldier("soldier", setInitialPosition());
                     break;
                 case "drone":
-                    ant = new Drone();
+                    ant = new Drone("drone", setInitialPosition());
                     break;
             }
             if (isCoordinateUnique(ant, ants)) {

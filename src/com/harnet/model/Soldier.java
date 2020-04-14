@@ -4,12 +4,11 @@ import java.util.List;
 
 public class Soldier extends Ant {
 
-    public Soldier() {
-        super("soldier");
+
+    public Soldier(String name, List<Integer> initialPosition) {
+        super(name, initialPosition);
     }
 
     @Override
-    public List<Integer> move() {
-        return null;
-    }
+    public void move(){}
 }

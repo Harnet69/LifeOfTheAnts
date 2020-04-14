@@ -1,16 +1,14 @@
 package com.harnet.model;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public abstract class Ant {
     private final String name;
     private List<Integer> position;
 
-    public Ant(String name) {
+    public Ant(String name, List<Integer> initialPosition) {
         this.name = name;
-        this.position = setInitialPosition();
+        this.position = initialPosition;
     }
 
     public String getName() {
@@ -25,10 +23,10 @@ public abstract class Ant {
         this.position = position;
     }
 
-    public List<Integer> setInitialPosition() {
-        Random rn = new Random();
-        return Arrays.asList(rn.nextInt(Colony.COLONY_SIZE.get(0)), rn.nextInt(Colony.COLONY_SIZE.get(1)));
-    }
+//    public List<Integer> setInitialPosition() {
+//        Random rn = new Random();
+//        return Arrays.asList(rn.nextInt(Colony.COLONY_SIZE.get(0)), rn.nextInt(Colony.COLONY_SIZE.get(1)));
+//    }
 
     public Ant getAntByPosition(List<Integer> position){
         if(this.position.get(0).equals(position.get(0)) && this.position.get(1).equals(position.get(1))){
@@ -37,5 +35,5 @@ public abstract class Ant {
         return null;
     }
 
-    public abstract List<Integer> move();
+    public abstract void move();
 }

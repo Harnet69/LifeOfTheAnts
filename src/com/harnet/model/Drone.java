@@ -4,12 +4,10 @@ import java.util.List;
 
 public class Drone extends Ant {
 
-    public Drone() {
-        super("drone");
+    public Drone(String name, List<Integer> initialPosition) {
+        super(name, initialPosition);
     }
 
     @Override
-    public List<Integer> move() {
-        return null;
-    }
+    public void move(){}
 }

@@ -8,12 +8,12 @@ import java.util.stream.Stream;
 
 public class Worker extends Ant {
 
-    public Worker() {
-        super("worker");
+    public Worker(String name, List<Integer> initialPosition) {
+        super(name, initialPosition);
     }
 
     @Override
-    public List<Integer> move() {
+    public void move() {
         // redundant
         List<Integer> currentPosition = this.getPosition();
         int x = this.getPosition().get(0) + ThreadLocalRandom.current().nextInt(-1, 1 + 1);
@@ -25,10 +25,7 @@ public class Worker extends Ant {
             if(x >= 0 && y >= 0 && x <= Colony.COLONY_SIZE.get(0) && y <= Colony.COLONY_SIZE.get(1) &&
                     ant.getAntByPosition(currentPosition) != null && ant.getAntByPosition(newPosition) == null){
                 ant.setPosition(newPosition);
-                return newPosition;
             }
         }
-//        System.out.println("out of bounds");
-        return currentPosition;
     }
 }
