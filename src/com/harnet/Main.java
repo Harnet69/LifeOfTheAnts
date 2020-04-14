@@ -13,6 +13,5 @@ public class Main {
         for(Ant ant : ants){
             System.out.println(ant.getName() + " : " + ant.getPosition());
         }
-//        System.out.println(Colony.getColony().getAnts().get(0).getPosition());
     }
 }

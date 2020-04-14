@@ -1,6 +1,5 @@
 package com.harnet.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -22,9 +21,15 @@ public abstract class Ant {
         return position;
     }
 
+    public void setPosition(List<Integer> position) {
+        this.position = position;
+    }
+
     public List<Integer> setInitialPosition() {
         Random rn = new Random();
-        return Arrays.asList(rn.nextInt(100), rn.nextInt(100));
+//        System.out.println(Colony.getColony().getAnts());
+//        System.out.println(Colony.COLONYSIZE.get(0));
+        return Arrays.asList(rn.nextInt(Colony.COLONYSIZE.get(0)), rn.nextInt(Colony.COLONYSIZE.get(1)));
     }
 
     public abstract List<Integer> move();
