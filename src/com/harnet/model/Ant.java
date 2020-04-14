@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Ant {
-    private String name;
+    private final String name;
     private List<Integer> position;
 
     public Ant(String name) {
@@ -27,9 +27,7 @@ public abstract class Ant {
 
     public List<Integer> setInitialPosition() {
         Random rn = new Random();
-//        System.out.println(Colony.getColony().getAnts());
-//        System.out.println(Colony.COLONYSIZE.get(0));
-        return Arrays.asList(rn.nextInt(Colony.COLONYSIZE.get(0)), rn.nextInt(Colony.COLONYSIZE.get(1)));
+        return Arrays.asList(rn.nextInt(Colony.COLONY_SIZE.get(0)), rn.nextInt(Colony.COLONY_SIZE.get(1)));
     }
 
     public abstract List<Integer> move();

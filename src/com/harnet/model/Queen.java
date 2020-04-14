@@ -18,7 +18,7 @@ public class Queen extends Ant {
     }
 
     public List<Integer> setInitialPosition() {
-        return Arrays.asList(Colony.COLONYSIZE.get(0)/2, Colony.COLONYSIZE.get(1)/2);
+        return Arrays.asList(Colony.COLONY_SIZE.get(0)/2, Colony.COLONY_SIZE.get(1)/2);
     }
 
     @Override
