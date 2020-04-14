@@ -25,7 +25,7 @@ public class Colony {
     }
 
     public static Colony getInstance() {
-        if(instance == null){
+        if (instance == null) {
             instance = new Colony();
         }
         return instance;
@@ -35,41 +35,46 @@ public class Colony {
         return ants;
     }
 
-    private void populateColony(){
-       populateWith(1, "Queen");
-       populateWith(WORKERS_QTT, "worker");
-       populateWith(SOLDIERS_QTT, "soldier");
-       populateWith(DRONES_QTT, "drone");
+    private void populateColony() {
+        populateWith(1, "Queen");
+        populateWith(WORKERS_QTT, "worker");
+        populateWith(SOLDIERS_QTT, "soldier");
+        populateWith(DRONES_QTT, "drone");
     }
 
-    private void populateWith(int qtt, String antName){
-        for(int i=1; i<=qtt; i++){
+    //TODO move set initial coordinates here
+    private void populateWith(int qtt, String antName) {
+        for (int i = 1; i <= qtt; i++) {
             Ant ant = null;
             switch (antName) {
-                case "Queen": ant = Queen.getInstance();
-                                break;
-                case "worker":  ant = new Worker();
-                                break;
-                case "soldier": ant = new Soldier();
-                                break;
-                case "drone":   ant = new Drone();
-                                break;
+                case "Queen":
+                    ant = Queen.getInstance();
+                    break;
+                case "worker":
+                    ant = new Worker();
+                    break;
+                case "soldier":
+                    ant = new Soldier();
+                    break;
+                case "drone":
+                    ant = new Drone();
+                    break;
             }
-            if(isCoordinateUnique(ant, ants)){
+            if (isCoordinateUnique(ant, ants)) {
                 ants.add(ant);
-            }else{
+            } else {
                 i--;
             }
         }
     }
 
     // check if the coordinate empty
-    public boolean isCoordinateUnique(Ant ant, List<Ant> ants){
-        for(Ant antInAnts : ants){
+    public boolean isCoordinateUnique(Ant ant, List<Ant> ants) {
+        for (Ant antInAnts : ants) {
             assert ant != null;
 
-            if(antInAnts.getPosition().get(0).equals(ant.getPosition().get(0)) &&
-                    antInAnts.getPosition().get(1).equals(ant.getPosition().get(1))){
+            if (antInAnts.getPosition().get(0).equals(ant.getPosition().get(0)) &&
+                    antInAnts.getPosition().get(1).equals(ant.getPosition().get(1))) {
                 System.out.println("Coordinate isn't unique");
                 return false;
             }
@@ -78,10 +83,10 @@ public class Colony {
     }
 
     //count the quantity of specific ant
-    public int countAnts(String antName){
+    public int countAnts(String antName) {
         return ants.stream()
                 .filter(x -> x.getName()
-                .equals(antName))
+                        .equals(antName))
                 .map(e -> 1)
                 .reduce(0, Integer::sum);
     }
