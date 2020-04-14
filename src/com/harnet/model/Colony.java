@@ -3,11 +3,10 @@ package com.harnet.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Colony {
     private static Colony instance = null;
-    public final static List<Integer> COLONY_SIZE = Arrays.asList(10, 10);
+    public final static List<Integer> COLONY_SIZE = Arrays.asList(7, 70);
     private final int WORKERS_QTT = 4;
     private final int SOLDIERS_QTT = 3;
     private final int DRONES_QTT = 2;
@@ -19,6 +18,10 @@ public class Colony {
 
     public List<Integer> getCOLONYSIZE() {
         return COLONY_SIZE;
+    }
+
+    public void setAnts(List<Ant> ants) {
+        this.ants = ants;
     }
 
     public static Colony getInstance() {
