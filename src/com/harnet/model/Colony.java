@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import static com.harnet.model.AntSpecie.*;
 
@@ -95,5 +96,24 @@ public class Colony {
                         .equals(antName))
                 .map(e -> 1)
                 .reduce(0, Integer::sum);
+    }
+
+    // Get the ant by its position
+    public Ant getAntByPosition(List<Integer> pos){
+        List<Ant> antByPos = null;
+        try {
+            antByPos = ants.stream()
+                    .filter(x -> x.getPosition().equals(pos))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        assert antByPos != null;
+        if(antByPos.size() > 0) {
+            return antByPos.get(0);
+        }else{
+            return null;
+        }
     }
 }

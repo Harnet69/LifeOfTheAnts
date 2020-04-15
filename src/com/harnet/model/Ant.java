@@ -23,11 +23,6 @@ public abstract class Ant {
         this.position = position;
     }
 
-//    public List<Integer> setInitialPosition() {
-//        Random rn = new Random();
-//        return Arrays.asList(rn.nextInt(Colony.COLONY_SIZE.get(0)), rn.nextInt(Colony.COLONY_SIZE.get(1)));
-//    }
-
     public Ant getAntByPosition(List<Integer> position){
         if(this.position.get(0).equals(position.get(0)) && this.position.get(1).equals(position.get(1))){
             return this;

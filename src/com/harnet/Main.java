@@ -3,6 +3,7 @@ package com.harnet;
 import com.harnet.model.Ant;
 import com.harnet.model.Colony;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -44,5 +45,10 @@ public class Main {
                 System.out.print(" -> ");
             }
         }
+
+        // Get the ant by its position
+        System.out.println();
+        System.out.println("Queen of ant on position: ");
+        System.out.println(Colony.getInstance().getAntByPosition(Arrays.asList(5,5)));
     }
 }
