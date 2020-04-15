@@ -1,6 +1,7 @@
 package com.harnet;
 
 import com.harnet.model.Ant;
+import com.harnet.model.AntSpecie;
 import com.harnet.model.Colony;
 
 import java.util.Arrays;

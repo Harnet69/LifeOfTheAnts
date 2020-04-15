@@ -14,7 +14,7 @@ public class Worker extends Ant {
 
     @Override
     public void move() {
-        // redundant
+        Colony colony = Colony.getInstance();
         List<Integer> currentPosition = this.getPosition();
         int x = this.getPosition().get(0) + ThreadLocalRandom.current().nextInt(-1, 1 + 1);
         int y = this.getPosition().get(1) + ThreadLocalRandom.current().nextInt(-1, 1 + 1);
@@ -22,7 +22,7 @@ public class Worker extends Ant {
         // check if the move out of bound
         for(Ant ant : Colony.getInstance().getAnts()){
             // todo divide to specific method isInBounds
-            if(x >= 0 && y >= 0 && x <= Colony.COLONY_SIZE.get(0) && y <= Colony.COLONY_SIZE.get(1) &&
+            if(colony.isInColonyBounds(newPosition)&&
                     ant.getAntByPosition(currentPosition) != null && ant.getAntByPosition(newPosition) == null){
                 ant.setPosition(newPosition);
             }

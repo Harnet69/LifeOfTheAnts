@@ -49,7 +49,7 @@ public class Colony {
 
     //TODO move set initial coordinates here
     // - fresh born ant get initial position here
-    // - replaced string in a ant name with ENUM
+    // - replaced string in a ant's name with ENUM
     private void populateWith(int qtt, AntSpecie antName) {
         for (int i = 1; i <= qtt; i++) {
             Ant ant = null;
@@ -99,21 +99,40 @@ public class Colony {
     }
 
     // Get the ant by its position
-    public Ant getAntByPosition(List<Integer> pos){
-        List<Ant> antByPos = null;
-        try {
-            antByPos = ants.stream()
-                    .filter(x -> x.getPosition().equals(pos))
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Ant getAntByPosition(List<Integer> pos) {
+        for(Ant ant : ants){
+            if(ant.getPosition().get(0).equals(pos.get(0)) && ant.getPosition().get(1).equals(pos.get(1))){
+                return ant;
+            }
         }
+        return null;
+    }
 
-        assert antByPos != null;
-        if(antByPos.size() > 0) {
-            return antByPos.get(0);
-        }else{
-            return null;
-        }
+
+
+//    public Ant getAntByPosition(List<Integer> pos) {
+//        List<Ant> antByPos = null;
+//        try {
+//            antByPos = ants.stream()
+//                    .filter(x -> x.getPosition().equals(pos))
+//                    .collect(Collectors.toList());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        assert antByPos != null;
+//        if (antByPos.size() > 0) {
+//            return antByPos.get(0);
+//        } else {
+//            return null;
+//        }
+//    }
+
+    // TODO create method coordinates-out-of-colony-bounds
+    // check is the coordinates out of Colony boundaries
+    public boolean isInColonyBounds(List<Integer> coordinates) {
+        return coordinates.get(0) >= 0 && coordinates.get(1) >= 0
+                && coordinates.get(0) <= Colony.COLONY_SIZE.get(0)
+                && coordinates.get(1) <= Colony.COLONY_SIZE.get(1);
     }
 }
