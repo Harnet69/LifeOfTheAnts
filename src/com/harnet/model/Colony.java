@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static com.harnet.model.AntSpecie.*;
+
 public class Colony {
     private static Colony instance = null;
     public final static List<Integer> COLONY_SIZE = Arrays.asList(10, 10);
@@ -38,28 +40,30 @@ public class Colony {
     }
 
     private void populateColony() {
-        populateWith(1, "Queen");
-        populateWith(WORKERS_QTT, "worker");
-        populateWith(SOLDIERS_QTT, "soldier");
-        populateWith(DRONES_QTT, "drone");
+        populateWith(1, QUEEN);
+        populateWith(WORKERS_QTT, WORKER);
+        populateWith(SOLDIERS_QTT, SOLDIER);
+        populateWith(DRONES_QTT, DRONE);
     }
 
     //TODO move set initial coordinates here
-    private void populateWith(int qtt, String antName) {
+    // - fresh born ant get initial position here
+    // - replaced string in a ant name with ENUM
+    private void populateWith(int qtt, AntSpecie antName) {
         for (int i = 1; i <= qtt; i++) {
             Ant ant = null;
             switch (antName) {
-                case "Queen":
+                case QUEEN:
                     ant = Queen.getInstance();
                     break;
-                case "worker":
-                    ant = new Worker("worker", setInitialPosition());
+                case WORKER:
+                    ant = new Worker(WORKER.toString(), setInitialPosition());
                     break;
-                case "soldier":
-                    ant = new Soldier("soldier", setInitialPosition());
+                case SOLDIER:
+                    ant = new Soldier(SOLDIER.toString(), setInitialPosition());
                     break;
-                case "drone":
-                    ant = new Drone("drone", setInitialPosition());
+                case DRONE:
+                    ant = new Drone(DRONE.toString(), setInitialPosition());
                     break;
             }
             if (isCoordinateUnique(ant, ants)) {
