@@ -11,6 +11,6 @@ public class Drone extends Ant {
 
     @Override
     public int[] behaviour() {
-        return new int[0];
+        return getPosition();
     }
 }

@@ -28,13 +28,14 @@ public class Main {
 
         // move ants
         System.out.println();
-        System.out.println("Movement of some worker ant: ");
+        System.out.println("Movement of some ant: ");
         for(int i=0; i<ITERATIONS_QTT; i++) {
             for(Ant ant : Colony.getInstance().getAnts()){
                 ant.move();
             }
 
-            System.out.print(Arrays.toString(Colony.getInstance().getAnts().get(1).getPosition()));
+            System.out.print(Colony.getInstance().getAnts().get(5).getName() + ":"
+                    + Arrays.toString(Colony.getInstance().getAnts().get(5).getPosition()));
             if(i < ITERATIONS_QTT-1) {
                 System.out.print(" -> ");
             }
