@@ -14,6 +14,9 @@ public class Queen extends Ant {
         return instance;
     }
 
+
     @Override
-    public void move() {}
+    public int[] behaviour() {
+        return getPosition();
+    }
 }

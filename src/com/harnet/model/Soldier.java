@@ -9,4 +9,9 @@ public class Soldier extends Ant {
 
     @Override
     public void move(){}
+
+    @Override
+    public int[] behaviour() {
+        return new int[0];
+    }
 }

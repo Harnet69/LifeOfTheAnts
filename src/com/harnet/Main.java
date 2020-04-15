@@ -34,7 +34,7 @@ public class Main {
                 ant.move();
             }
 
-            System.out.print(Arrays.toString(Colony.getInstance().getAnts().get(2).getPosition()));
+            System.out.print(Arrays.toString(Colony.getInstance().getAnts().get(1).getPosition()));
             if(i < ITERATIONS_QTT-1) {
                 System.out.print(" -> ");
             }
