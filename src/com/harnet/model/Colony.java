@@ -1,16 +1,14 @@
 package com.harnet.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import static com.harnet.model.AntSpecie.*;
 
 public class Colony {
     private static Colony instance = null;
-    public final static List<Integer> COLONY_SIZE = Arrays.asList(10, 10);
+    public final static int[] COLONY_SIZE = new int[] {10,10};
     private final int WORKERS_QTT = 4;
     private final int SOLDIERS_QTT = 3;
     private final int DRONES_QTT = 2;
@@ -20,7 +18,7 @@ public class Colony {
         populateColony();
     }
 
-    public List<Integer> getCOLONYSIZE() {
+    public int[] getCOLONYSIZE() {
         return COLONY_SIZE;
     }
 
@@ -35,9 +33,9 @@ public class Colony {
         return ants;
     }
 
-    public List<Integer> setInitialPosition() {
+    public int[] setInitialPosition() {
         Random rn = new Random();
-        return Arrays.asList(rn.nextInt(COLONY_SIZE.get(0)), rn.nextInt(COLONY_SIZE.get(1)));
+        return new int[]{rn.nextInt(COLONY_SIZE[0]), rn.nextInt(COLONY_SIZE[1])};
     }
 
     private void populateColony() {
@@ -80,8 +78,8 @@ public class Colony {
         for (Ant antInAnts : ants) {
             assert ant != null;
 
-            if (antInAnts.getPosition().get(0).equals(ant.getPosition().get(0)) &&
-                    antInAnts.getPosition().get(1).equals(ant.getPosition().get(1))) {
+            if (antInAnts.getPosition()[0] == ant.getPosition()[0] &&
+                    antInAnts.getPosition()[1] == ant.getPosition()[1]) {
                 System.out.println("Coordinate isn't unique");
                 return false;
             }
@@ -99,9 +97,9 @@ public class Colony {
     }
 
     // Get the ant by its position
-    public Ant getAntByPosition(List<Integer> pos) {
+    public Ant getAntByPosition(int[] pos) {
         for(Ant ant : ants){
-            if(ant.getPosition().get(0).equals(pos.get(0)) && ant.getPosition().get(1).equals(pos.get(1))){
+            if (ant.getPosition()[0] == pos[0] && ant.getPosition()[1] == pos[1]){
                 return ant;
             }
         }
@@ -109,7 +107,7 @@ public class Colony {
     }
 
 
-
+    // Get the ant by its position with Streams
 //    public Ant getAntByPosition(List<Integer> pos) {
 //        List<Ant> antByPos = null;
 //        try {
@@ -130,9 +128,9 @@ public class Colony {
 
     // TODO create method coordinates-out-of-colony-bounds
     // check is the coordinates out of Colony boundaries
-    public boolean isInColonyBounds(List<Integer> coordinates) {
-        return coordinates.get(0) >= 0 && coordinates.get(1) >= 0
-                && coordinates.get(0) <= Colony.COLONY_SIZE.get(0)
-                && coordinates.get(1) <= Colony.COLONY_SIZE.get(1);
+    public boolean isInColonyBounds(int[] coordinates) {
+        return coordinates[0] >= 0 && coordinates[1] >= 0
+                && coordinates[0] <= Colony.COLONY_SIZE[0]
+                && coordinates[1] <= Colony.COLONY_SIZE[1];
     }
 }

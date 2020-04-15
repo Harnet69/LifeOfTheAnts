@@ -5,7 +5,6 @@ import com.harnet.model.AntSpecie;
 import com.harnet.model.Colony;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     private static final int ITERATIONS_QTT = 10;
@@ -13,19 +12,19 @@ public class Main {
     public static void main(String[] args) {
         //size of the colony
         System.out.println("Size of the colony: ");
-        System.out.println(Colony.getInstance().getCOLONYSIZE());
+        System.out.println(Arrays.toString(Colony.getInstance().getCOLONYSIZE()));
 
         //Show all ants with coordinates
         System.out.println();
         System.out.println("Ants with initial coordinates: ");
         for(Ant ant : Colony.getInstance().getAnts()){
-            System.out.println(ant.getName() + " : " + ant.getPosition());
+            System.out.println(ant.getName() + " : " + Arrays.toString(ant.getPosition()));
         }
 
         // number of drones in the colony
         System.out.println();
         System.out.println("Drones in the colony: ");
-        System.out.println(Colony.getInstance().countAnts("drone"));
+        System.out.println(Colony.getInstance().countAnts(AntSpecie.DRONE.toString()));
 
         // move ants
         System.out.println();
@@ -35,13 +34,7 @@ public class Main {
                 ant.move();
             }
 
-//            Colony.getInstance().getAnts().stream()
-//                .filter(x -> x.getName().equals("worker"))
-//                    .map(Ant::move);
-////                    .forEach(System.out::println);
-
-            // display movement of some ant
-            System.out.print(Colony.getInstance().getAnts().get(2).getPosition());
+            System.out.print(Arrays.toString(Colony.getInstance().getAnts().get(2).getPosition()));
             if(i < ITERATIONS_QTT-1) {
                 System.out.print(" -> ");
             }
@@ -50,6 +43,6 @@ public class Main {
         // Get the ant by its position
         System.out.println();
         System.out.println("Queen of ant on position: ");
-        System.out.println(Colony.getInstance().getAntByPosition(Arrays.asList(5,5)));
+        System.out.println(Colony.getInstance().getAntByPosition(new int[]{5,5}));
     }
 }

@@ -1,10 +1,8 @@
 package com.harnet.model;
 
-import java.util.List;
-
 public class Drone extends Ant {
 
-    public Drone(String name, List<Integer> initialPosition) {
+    public Drone(String name, int[] initialPosition) {
         super(name, initialPosition);
     }
 

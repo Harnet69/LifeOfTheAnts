@@ -1,12 +1,11 @@
 package com.harnet.model;
 
-import java.util.List;
-
 public abstract class Ant {
     private final String name;
-    private List<Integer> position;
+    // TODO Change ArrayList to int[]
+    private int[] position; // Change ArrayList to int[]
 
-    public Ant(String name, List<Integer> initialPosition) {
+    public Ant(String name, int[] initialPosition) {
         this.name = name;
         this.position = initialPosition;
     }
@@ -15,16 +14,16 @@ public abstract class Ant {
         return name;
     }
 
-    public List<Integer> getPosition() {
+    public int[] getPosition() {
         return position;
     }
 
-    public void setPosition(List<Integer> position) {
+    public void setPosition(int[] position) {
         this.position = position;
     }
 
-    public Ant getAntByPosition(List<Integer> position){
-        if(this.position.get(0).equals(position.get(0)) && this.position.get(1).equals(position.get(1))){
+    public Ant getAntByPosition(int[] position){
+        if(this.position[0] == position[0] && this.position[1] == position[1]){
             return this;
         }
         return null;

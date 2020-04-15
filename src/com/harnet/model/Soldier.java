@@ -1,11 +1,9 @@
 package com.harnet.model;
 
-import java.util.List;
-
 public class Soldier extends Ant {
 
 
-    public Soldier(String name, List<Integer> initialPosition) {
+    public Soldier(String name, int[] initialPosition) {
         super(name, initialPosition);
     }
 
